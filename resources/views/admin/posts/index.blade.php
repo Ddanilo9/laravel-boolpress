@@ -20,7 +20,8 @@
                             <th scope="col">#</th>
                             <th scope="col">Title</th>
                             <th scope="col">Slug</th>
-                            <th scope="col">Created at</th> 
+                            <th scope="col">Created at</th>
+                            <th colspan="2"></th> 
                             <th></th>
                         </tr>    
                     </thead>
@@ -33,6 +34,14 @@
                                 <td>{{$post->created_at}}</td>
                                 <td>
                                     <a href="{{route('admin.posts.show', $post)}}" type="button" class="btn btn-secondary btn-sm">vedi</a>
+                                </td>
+                                <td>
+                                    <form action="{{route('admin.posts.destroy', $post)}}" method="POST">
+                
+                                        @csrf
+                                        @method('DELETE')
+                                        <input type="submit" value="Delete" class="btn btn-danger btn-sm">
+                                        </form>
                                 </td>
                             </tr> 
                         @endforeach
