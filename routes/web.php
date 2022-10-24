@@ -19,15 +19,17 @@ Route::get('/', function () {
 
 Auth::routes();
 
-// Route::middleware('auth')->get('admin/home', 'Admin\HomeController@index')->name('admin.home');
+// Route::middleware('auth')->get('/admin/home', 'Admin\HomeController@index')->name('admin.home');
 
-Route::middleware('auth') //middleware
-->prefix('admin')  //prefisso nome
-->name('admin.')  //prefisso nome rotta
-->namespace('Admin') //prefisso namespace controller
-->group(function(){
+Route::middleware('auth')
+    ->prefix('admin')
+    ->name('admin.')
+    ->namespace('Admin')
+    ->group(function () {
 
-    Route::get('/home', 'HomeController@index')->name('home');
+        Route::get('/home', 'HomeController@index')->name('home');
 
-    Route::resource('posts', 'PostController');
-});
+        Route::resource('posts', 'PostController');
+
+        Route::resource('tags', 'TagController')->only(['show']);
+    });
