@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Post;
 use App\Tag;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Storage;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -49,7 +49,7 @@ class PostController extends Controller
             'content' => 'required',
             'category_id' => 'nullable|exists:categories,id',
             'tags.*' => 'exists:tags,id',
-            'image' => 'nullable|image|max:2048'
+            'image' => 'nullable|image|mimes:jpeg,bmp,png'
         ]);
 
         $params['slug'] = Post::getUniqueSlugFrom($params['title']);
