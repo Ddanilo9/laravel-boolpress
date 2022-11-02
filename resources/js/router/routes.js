@@ -1,4 +1,5 @@
-import Home from '../pages/Home.vue'
+import Home from '../pages/Home.vue';
+import ContactUs from '../pages/ContactUs';
 
 const routes = [
     {
@@ -6,6 +7,11 @@ const routes = [
         name: 'home',
         component: Home,
     },
+    {
+        path: '/contatti',
+        name: 'contact-us',
+        component: ContactUs,
+    }
 ];
 
 export default routes;
