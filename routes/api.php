@@ -19,6 +19,8 @@ use Illuminate\Support\Facades\Route;
 // });
 
 
-Route::resource('posts','Api\PostController')->only(['index','show']);
+Route::resource('posts','Api\PostController')->only(['index','show'])->parameters([
+    'posts'=> 'slug'
+]);
 // /api/posts -> Api\PostController@index
 // /api/posts{post} -> Api\PostController@show
