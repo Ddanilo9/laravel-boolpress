@@ -2,6 +2,7 @@ import Home from '../pages/Home.vue';
 import ContactUs from '../pages/ContactUs';
 import AboutUs from '../pages/AboutUs';
 import PostsIndex from '../pages/Posts.index.vue';
+import PostsShow from '../pages/Posts.show.vue';
 
 
 const routes = [
@@ -24,6 +25,12 @@ const routes = [
         path: '/blog',
         name: 'post.index',
         component: PostsIndex,
+    },
+    {
+        path: '/blog:slug',
+        name: 'post.show',
+        component: PostsShow,
+        props: true
     },
 ];
 

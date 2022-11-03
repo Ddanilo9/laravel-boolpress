@@ -9,21 +9,22 @@
         <section class="py-12">
             <div class="container">
                 <div class="grid grid-cols-3 gap-8">
-                    <PostCard
-                        v-for="post in posts"
-                        :key="post.id"
-                        :post="post"
-                    />
+                    <router-link :to="{ name: 'post.show', params: {slug: post.slug}}" v-for="post in posts" :key="post.id">
+                        <PostCard :post="post" />
+                    </router-link>
                 </div>
             </div>
 
             <div class="container pt-12">
                 <ul class="flex gap-6 justify-center">
-                    <li @click="fetchPosts(page)"
+                    <li
+                        @click="fetchPosts(page)"
                         :class="{
                             'w-8 h-8 flex items-center justify-center rounded-full': true,
                             'bg-amber-400': page === currentPage,
-                            'bg-gray-100 cursor-pointer hover:bg-amber-300': page !== currentPage}"
+                            'bg-gray-100 cursor-pointer hover:bg-amber-300':
+                                page !== currentPage,
+                        }"
                         v-for="page in lastPage"
                         :key="page"
                     >
